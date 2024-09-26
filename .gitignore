@@ -1,0 +1,44 @@
+# Common Ignored Files (for both frontend and backend)
+node_modules/
+.env
+npm-debug.log
+yarn-error.log
+.DS_Store
+
+# Ignore build and distribution files in both frontend and backend
+build/
+dist/
+
+# Ignore logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore OS-generated files
+Thumbs.db
+.DS_Store
+
+# Ignore package-lock and yarn.lock if not using them (optional)
+# If you only use package-lock in backend and yarn.lock in frontend, adjust accordingly
+package-lock.json
+yarn.lock
+
+# Ignore frontend-specific files
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.env
+frontend/coverage/
+
+# Ignore backend-specific files
+backend/node_modules/
+backend/build/
+backend/dist/
+backend/.env
+backend/coverage/
+
+# Ignore IDE-specific settings (optional, but useful)
+.vscode/
+.idea/
