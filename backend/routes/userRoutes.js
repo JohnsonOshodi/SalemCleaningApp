@@ -13,7 +13,7 @@ router.post('/register', async (req, res) => {
         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.status(201).json({ token });
     } catch (error) {
-        res.status(500).json({ message: 'Error registering user' });
+        res.status(500).json({ message: 'Error registering user', error: error.message });
     }
 });
 
@@ -28,14 +28,18 @@ router.post('/login', async (req, res) => {
         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.status(200).json({ token });
     } catch (error) {
-        res.status(500).json({ message: 'Error logging in' });
+        res.status(500).json({ message: 'Error logging in', error: error.message });
     }
 });
 
 // Get user profile (protected route)
 router.get('/profile', authMiddleware, async (req, res) => {
-    const user = await User.findById(req.user._id);
-    res.status(200).json(user);
+    try {
+        const user = await User.findById(req.user._id);
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Error retrieving profile', error: error.message });
+    }
 });
 
 module.exports = router;

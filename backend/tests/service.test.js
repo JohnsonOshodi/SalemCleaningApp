@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../server'); // Ensure server.js exports Express instance
+const app = require('../server');      
 
 describe('Service API', () => {
     it('should fetch all services', async () => {

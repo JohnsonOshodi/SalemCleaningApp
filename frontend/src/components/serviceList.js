@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { getServices } from '../services/api';
+import PropTypes from 'prop-types';
 
 const ServiceList = ({ navigation }) => {
     const [services, setServices] = useState([]);
@@ -29,4 +30,10 @@ const ServiceList = ({ navigation }) => {
     );
 };
 
+ServiceList.propTypes = {
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func.isRequired,
+    }).isRequired,
+  };
+  
 export default ServiceList;

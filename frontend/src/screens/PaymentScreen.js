@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, Button, TextInput } from 'react-native';
 import { processPayment } from '../services/api';
+import { sendPaymentDataToAdmin } from '../services/api';
+import PropTypes from 'prop-types';
 
 const PaymentScreen = ({ route }) => {
     const [cardToken, setCardToken] = useState('');
@@ -23,5 +25,13 @@ const PaymentScreen = ({ route }) => {
         </View>
     );
 };
+
+PaymentScreen.propTypes = {
+    route: PropTypes.shape({
+      params: PropTypes.shape({
+        serviceId: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  };
 
 export default PaymentScreen;

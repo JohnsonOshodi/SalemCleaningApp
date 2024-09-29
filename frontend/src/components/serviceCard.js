@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 
 const ServiceCard = ({ service }) => {
@@ -33,4 +34,12 @@ const styles = StyleSheet.create({
     },
 });
 
+ServiceCard.propTypes = {
+    service: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      description: PropTypes.string.isRequired,
+    }).isRequired,
+  };
+  
 export default ServiceCard;
